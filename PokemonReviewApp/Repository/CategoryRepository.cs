@@ -18,6 +18,7 @@ namespace PokemonReviewApp.Repository
             return _context.Categories.Any(c => c.Id == id);
         }
 
+        
         public ICollection<Category> GetCategories()
         {
             return _context.Categories.ToList();
@@ -32,6 +33,23 @@ namespace PokemonReviewApp.Repository
         {
             return _context.PokemonCategories.Where(e => e.CategoryId == categoryId).Select(c=>c.Pokemon).ToList();//select here (entity framework does not load it ) to tell it load it for us 
             
+        }
+        public bool CreateCategory(Category category)
+        {
+            //Change Tracker
+            //add, update, modify
+            //connected vs disconnect
+            //EntityState.Added = 
+            _context.Add(category);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            //enity framework take all changes and convert to sql and send it to database
+            //
+            return saved > 0? true: false;
         }
     }
 }
