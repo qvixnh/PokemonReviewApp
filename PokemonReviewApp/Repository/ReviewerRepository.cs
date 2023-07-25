@@ -7,7 +7,7 @@ using PokemonReviewApp.Models;
 
 namespace PokemonReviewApp.Repository
 {
-    public class ReviewerRepository:IReviewerRepository
+    public class ReviewerRepository : IReviewerRepository
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
@@ -53,6 +53,12 @@ namespace PokemonReviewApp.Repository
         public bool UpdateReviewer(Reviewer reviewer)
         {
             _context.Update(reviewer);
+            return Save();
+        }
+
+        public bool DeleteReviewer(Reviewer reviewer)
+        {
+            _context.Remove(reviewer);
             return Save();
         }
     }
