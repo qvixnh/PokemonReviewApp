@@ -13,14 +13,12 @@ namespace PokemonReviewApp.Controllers
     public class PokemonController : Controller
     {
         private IPokemonRepository _pokemonRepository;
-        private readonly IOwnerRepository _ownerRepository;
         private readonly IReviewRepository _reviewRepository;
         private readonly IMapper _mapper;
 
-        public PokemonController(IPokemonRepository pokemonRepository,IOwnerRepository ownerRepository,IReviewRepository reviewRepository, IMapper mapper )
+        public PokemonController(IPokemonRepository pokemonRepository,IReviewRepository reviewRepository, IMapper mapper )
         {
             _pokemonRepository = pokemonRepository;
-            _ownerRepository = ownerRepository;
             _reviewRepository = reviewRepository;
             _mapper = mapper;
         }
@@ -87,6 +85,8 @@ namespace PokemonReviewApp.Controllers
             }
             return Ok("Successfully created");
         }
+        
+         
         [HttpPut("{pokemonId}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
@@ -131,5 +131,7 @@ namespace PokemonReviewApp.Controllers
                 ModelState.AddModelError("", "Something went wrong deleting pokemon");
             return NoContent();
         }
+
+        
     }
 }
