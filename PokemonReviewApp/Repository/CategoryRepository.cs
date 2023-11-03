@@ -1,4 +1,5 @@
 ﻿using PokemonReviewApp.Data;
+using PokemonReviewApp.Dto;
 using PokemonReviewApp.Interfaces;
 using PokemonReviewApp.Models;
 
@@ -62,6 +63,12 @@ namespace PokemonReviewApp.Repository
         {
             _context.Remove(category);
             return Save();
+        }
+
+        public Category GetCategoryTrimToUpper(CategoryDto categoryCreate)
+        {
+            return GetCategories().Where(c => c.Name.Trim().ToUpper() == categoryCreate.Name.TrimEnd().ToUpper())
+                            .FirstOrDefault();
         }
     }
 }
