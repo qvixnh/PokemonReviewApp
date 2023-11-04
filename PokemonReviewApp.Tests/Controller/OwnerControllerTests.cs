@@ -49,7 +49,7 @@ namespace PokemonReviewApp.Tests.Controller
             var ownerCreate = A.Fake<OwnerDto>();
             var owners = A.Fake<ICollection<OwnerDto>>();
             var ownersList = A.Fake<List<OwnerDto>>();
-            A.CallTo(() => _ownerRepository.GetCategoryTrimToUpper(ownerCreate)).Returns(owner);
+            A.CallTo(() => _ownerRepository.GetOwnerTrimToUpper(ownerCreate)).Returns(owner);
             A.CallTo(() => _mapper.Map<Country>(ownerCreate));
             A.CallTo(() => _ownerRepository.CreateOwner(ownerMap)).Returns(true);//bool
             var controller = new OwnerController(_ownerRepository,_countryRepository, _mapper);

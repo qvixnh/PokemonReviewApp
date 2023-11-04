@@ -26,7 +26,7 @@ namespace PokemonReviewApp.Repository
             return Save();
         }
 
-        public Owner GetCategoryTrimToUpper(OwnerDto ownerCreate)
+        public Owner GetOwnerTrimToUpper(OwnerDto ownerCreate)
         {
             return GetOwners().Where(c => c.FirstName.Trim().ToUpper() == ownerCreate.FirstName.TrimEnd().ToUpper()).FirstOrDefault();
         }
