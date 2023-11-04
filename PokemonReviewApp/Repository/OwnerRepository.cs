@@ -1,4 +1,5 @@
 ﻿using PokemonReviewApp.Data;
+using PokemonReviewApp.Dto;
 using PokemonReviewApp.Interfaces;
 using PokemonReviewApp.Models;
 
@@ -23,6 +24,11 @@ namespace PokemonReviewApp.Repository
         {
             _context.Remove(owner);
             return Save();
+        }
+
+        public Owner GetCategoryTrimToUpper(OwnerDto ownerCreate)
+        {
+            return GetOwners().Where(c => c.FirstName.Trim().ToUpper() == ownerCreate.FirstName.TrimEnd().ToUpper()).FirstOrDefault();
         }
 
         public Owner GetOwner(int ownerId)

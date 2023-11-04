@@ -17,7 +17,6 @@ namespace PokemonReviewApp.Controllers
         private IOwnerRepository _ownerRepository;
         private readonly ICountryRepository _countryRepository;
         private IMapper _mapper;
-        private readonly IPokemonRepository _pokemonRepository;
 
         public OwnerController(IOwnerRepository ownerRepository, ICountryRepository countryRepository,IMapper mapper)
         {

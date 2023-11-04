@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PokemonReviewApp.Data;
+using PokemonReviewApp.Dto;
 using PokemonReviewApp.Interfaces;
 using PokemonReviewApp.Models;
 
@@ -70,6 +71,11 @@ namespace PokemonReviewApp.Repository
         {
             _context.RemoveRange(reviews);
             return Save();
+        }
+
+        public Review GetReviewTrimToUpper(ReviewDto reviewDto)
+        {
+            return GetReviews().Where(c => c.Title.Trim().ToUpper() == reviewDto.Title.TrimEnd().ToUpper()).FirstOrDefault();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PokemonReviewApp.Models;
+﻿using PokemonReviewApp.Dto;
+using PokemonReviewApp.Models;
 
 namespace PokemonReviewApp.Interfaces
 {
@@ -8,6 +9,8 @@ namespace PokemonReviewApp.Interfaces
         Owner GetOwner(int ownerId);
         ICollection<Owner> GetOwnOfAPokemon(int pokeId);
         ICollection<Pokemon> GetPokemonByOwner(int ownerId);
+        Owner GetCategoryTrimToUpper(OwnerDto ownerCreate);
+
         bool OwnerExists(int ownerId);
         bool CreateOwner(Owner owner);
         bool UpdateOwner(Owner owner);

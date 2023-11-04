@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
 using PokemonReviewApp.Data;
+using PokemonReviewApp.Dto;
 using PokemonReviewApp.Interfaces;
 using PokemonReviewApp.Models;
 
@@ -60,6 +61,11 @@ namespace PokemonReviewApp.Repository
         {
             _context.Remove(reviewer);
             return Save();
+        }
+
+        public Reviewer GetReviewerTrimToUpper(ReviewerDto reviewerCreate)
+        {
+            return GetReviewers().Where(c => c.FirstName.Trim().ToUpper() == reviewerCreate.FirstName.TrimEnd().ToUpper()).FirstOrDefault();
         }
     }
 }

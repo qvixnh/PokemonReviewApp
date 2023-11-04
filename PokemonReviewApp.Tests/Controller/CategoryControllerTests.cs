@@ -47,7 +47,7 @@ namespace PokemonReviewApp.Tests.Controller
             var categories = A.Fake<ICollection<CategoryDto>>();
             var categoriesList = A.Fake<List<CategoryDto>>();
             A.CallTo(() => _categoryRepository.GetCategoryTrimToUpper(categoryCreate)).Returns(category);
-            A.CallTo(() => _mapper.Map<Pokemon>(categoryCreate));
+            A.CallTo(() => _mapper.Map<Category>(categoryCreate));
             A.CallTo(() => _categoryRepository.CreateCategory(categoryMap)).Returns(true);//bool
             var controller = new CategoryController(_categoryRepository,_mapper);
             //Act

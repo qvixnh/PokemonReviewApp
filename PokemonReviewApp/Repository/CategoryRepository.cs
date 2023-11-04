@@ -67,8 +67,7 @@ namespace PokemonReviewApp.Repository
 
         public Category GetCategoryTrimToUpper(CategoryDto categoryCreate)
         {
-            return GetCategories().Where(c => c.Name.Trim().ToUpper() == categoryCreate.Name.TrimEnd().ToUpper())
-                            .FirstOrDefault();
+            return GetCategories().Where(c => c.Name.Trim().ToUpper() == categoryCreate.Name.TrimEnd().ToUpper()).FirstOrDefault();
         }
     }
 }

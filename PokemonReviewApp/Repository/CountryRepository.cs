@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PokemonReviewApp.Data;
+using PokemonReviewApp.Dto;
 using PokemonReviewApp.Interfaces;
 using PokemonReviewApp.Models;
 
@@ -8,12 +9,10 @@ namespace PokemonReviewApp.Repository
     public class CountryRepository : ICountryRepository
     {
         private readonly DataContext _context;
-        private IMapper _mapper;
 
-        public CountryRepository(DataContext context, IMapper mapper)
+        public CountryRepository(DataContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public bool CountryExists(int id)
@@ -31,6 +30,12 @@ namespace PokemonReviewApp.Repository
         {
             _context.Remove(country);
             return Save();
+        }
+
+        public Country GetCountryTrimToUpper(CountryDto countryCreate)
+        {
+            return GetCountries().Where(c => c.Name.Trim().ToUpper() == countryCreate.Name.TrimEnd().ToUpper()).FirstOrDefault();
+
         }
 
         public ICollection<Country> GetCountries()

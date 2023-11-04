@@ -1,4 +1,5 @@
-﻿using PokemonReviewApp.Models;
+﻿using PokemonReviewApp.Dto;
+using PokemonReviewApp.Models;
 
 namespace PokemonReviewApp.Interfaces
 {
@@ -8,6 +9,7 @@ namespace PokemonReviewApp.Interfaces
         ICollection<Country> GetCountries();
         Country GetCountry(int id);
         Country GetCountryByOwner(int ownerId);
+        Country GetCountryTrimToUpper(CountryDto countryCreate);
         ICollection<Owner> GetOwnersFromACountry(int countryId);
         bool CountryExists(int id);
         bool CreateCountry(Country country);
